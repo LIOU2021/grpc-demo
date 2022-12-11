@@ -17,7 +17,7 @@ func main() {
 	defer conn.Close()
 
 	client := pbUsers.NewUsersClient(conn)
-	feature, err := client.Greet(
+	greet, err := client.Greet(
 		context.Background(),
 		&pbUsers.GreetRequest{
 			Limit: 7,
@@ -28,5 +28,6 @@ func main() {
 		log.Fatalln(err)
 	}
 
-	fmt.Println(feature)
+	fmt.Println(greet)
+	fmt.Println("response data : ", greet.Data)
 }
