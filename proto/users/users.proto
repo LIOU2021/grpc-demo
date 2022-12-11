@@ -11,7 +11,7 @@ enum Gender{
     female=1;
 }
 
-message user{
+message User{
     string name=1;
     int64 age=2;
     Gender gender=3;
@@ -25,5 +25,5 @@ message GreetRequest{
 message GreetResponse{
     int64 page=1;
     int64 limit=2;
-    repeated user data=3;
+    repeated User data=3;
 }

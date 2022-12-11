@@ -17,7 +17,8 @@ type UsersServer struct {
 }
 
 func (server *UsersServer) Greet(ctx context.Context, req *pbUsers.GreetRequest) (rep *pbUsers.GreetResponse, err error) {
-	rep.Data = []*pbUsers.User{
+	rep = &pbUsers.GreetResponse{}
+	data := []*pbUsers.User{
 		{
 			Age:    10,
 			Name:   "f1",
@@ -29,14 +30,17 @@ func (server *UsersServer) Greet(ctx context.Context, req *pbUsers.GreetRequest)
 			Gender: pbUsers.Gender_female,
 		},
 	}
-	rep.Data = append(rep.Data, &pbUsers.User{
+
+	data = append(data, &pbUsers.User{
 		Age:    12,
 		Name:   "m1",
 		Gender: pbUsers.Gender_male,
 	})
+
+	rep.Data = data
 	rep.Page = req.Page
 	rep.Limit = req.Limit
-	return rep, nil
+	return
 }
 
 var (
