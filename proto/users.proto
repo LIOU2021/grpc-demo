@@ -13,7 +13,7 @@ enum Gender{
 
 message user{
     string name=1;
-    int age=2;
+    int64 age=2;
     Gender gender=3;
 }
 
